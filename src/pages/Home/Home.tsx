@@ -41,7 +41,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className={styles.screenBody}>
+    <section className={styles.homePage}>
       <h1>My Contacts</h1>
       <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className={styles.myCard}>

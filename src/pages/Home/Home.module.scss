@@ -1,10 +1,13 @@
 @use "../../scss/variables" as *;
 
-.screenBody {
+.homePage {
   padding: 30px 40px 0 40px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @include media-mobile-lg {
+    padding: 10px 10px 0 10px;
+  }
   .myCard {
     display: flex;
     align-items: center;
@@ -17,6 +20,7 @@
   }
   .contactList {
     font-size: 1.5rem;
+    list-style: none;
     .nameListItem {
       border-top: 1px solid $grey-bg;
       padding: 10px 5px;

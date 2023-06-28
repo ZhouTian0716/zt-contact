@@ -7,7 +7,7 @@ import { Link, Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className="center p-2">
+    <div className={styles.appContainer}>
       <div className={styles.bgPhone}>
         <header className={styles.header}>
           <Link to="/">
