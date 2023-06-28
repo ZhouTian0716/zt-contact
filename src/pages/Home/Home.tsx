@@ -1,14 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import { GrFormAdd } from "react-icons/gr";
+import { BiSolidStar, BiSolidUserCircle } from "react-icons/bi";
+import { AiFillClockCircle, AiOutlineHome } from "react-icons/ai";
+import { IoIosKeypad } from "react-icons/io";
 import styles from "./Home.module.scss";
 import { getAllContacts } from "../../api/contacts";
 import { IContact } from "../../api/resTypes";
+import SearchInput from "../../components/SearchInput/SearchInput";
+import Avatar from "../../assets/avatar.jpg";
+import { compareNames } from "../../utils/helpers";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const firstMount = useRef(true);
   const [contacts, setContacts] = useState<IContact[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+  const sortedContacts = contacts.sort(compareNames);
 
   const fetchContacts = async () => {
     try {
@@ -35,31 +43,24 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="center p-2">
-      <div className={styles.bgPhone}>
-        <header className={styles.header}>
-          <span>list</span>
-          <button className={styles.addBtn}>
-            <GrFormAdd />
-          </button>
-        </header>
-        <section className={styles.screenBody}>
-          <h1>My Contacts</h1>
-          <input type="text" placeholder="Search..." />
-          <div>
-            <img src="" alt="" />
-            <span>My Name</span>
-          </div>
-          <ul>
-            {isLoading && <li>Loading...</li>}
-            {fetchError && <li>{fetchError}</li>}
-            {contacts && contacts.map((contact) => (
-              <li key={contact.id}>{contact.name}</li>
-            ))}
-          </ul>
-        </section>
+    <section className={styles.screenBody}>
+      <h1>My Contacts</h1>
+      <SearchInput />
+      <div className={styles.myCard}>
+        <img className={styles.avatar} src={Avatar} alt="meAvatar" />
+        <span className="fz-4">Jenny Doe</span>
       </div>
-    </div>
+      <ul className={styles.contactList}>
+        {isLoading && <li>Loading...</li>}
+        {fetchError && <li>{fetchError}</li>}
+        {sortedContacts &&
+          sortedContacts.map((contact) => (
+            <Link to={`/contacts/${contact.id}`} key={contact.id}>
+              <li className={styles.nameListItem}>{contact.name}</li>
+            </Link>
+          ))}
+      </ul>
+    </section>
   );
 };
 

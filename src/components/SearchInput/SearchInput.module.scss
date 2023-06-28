@@ -1,0 +1,26 @@
+@use "../../scss/variables" as *;
+
+.searchContainer{
+    position: relative;
+    font-size: 2rem;
+    .searchIcon{
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: $theme-main;
+    }
+    .searchInput{
+        width: 100%;
+        padding: 10px 10px 10px 50px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1.5rem;
+        background-color: $grey-bg;
+        transition: all 500ms;
+        &:focus{
+            box-shadow: 0 0 0 1px $theme-main;
+        }
+    }
+}
