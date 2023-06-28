@@ -10,7 +10,6 @@ interface IProps {
 }
 
 function ContactLocation({ center, customStyles }: IProps) {
-  console.log("ContactLocation",center);
   return (
     <GoogleMap mapContainerStyle={customStyles} center={center} zoom={3}>
       <>
