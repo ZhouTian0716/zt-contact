@@ -1,8 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { GrFormAdd } from "react-icons/gr";
-import { BiSolidStar, BiSolidUserCircle } from "react-icons/bi";
-import { AiFillClockCircle, AiOutlineHome } from "react-icons/ai";
-import { IoIosKeypad } from "react-icons/io";
 import styles from "./Home.module.scss";
 import { getAllContacts } from "../../api/contacts";
 import { IContact } from "../../api/resTypes";
@@ -14,9 +10,11 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const firstMount = useRef(true);
   const [contacts, setContacts] = useState<IContact[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
-  const sortedContacts = contacts.sort(compareNames);
+
+  const sortedContacts = contacts.filter((option) => option.name.toLowerCase().includes(searchTerm.toLowerCase())).sort(compareNames);
 
   const fetchContacts = async () => {
     try {
@@ -45,7 +43,7 @@ const Home = () => {
   return (
     <section className={styles.screenBody}>
       <h1>My Contacts</h1>
-      <SearchInput />
+      <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className={styles.myCard}>
         <img className={styles.avatar} src={Avatar} alt="meAvatar" />
         <span className="fz-4">Jenny Doe</span>

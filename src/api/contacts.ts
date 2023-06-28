@@ -7,7 +7,7 @@ export const getAllContacts = async () => {
   return data;
 };
 
-export const getContactById = async (contactId: number) => {
+export const getContactById = async (contactId: string) => {
   const { data } = await axios.get<IContact>(`${baseUrl}/users/${contactId}`);
   return data;
 };
