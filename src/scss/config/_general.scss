@@ -1,0 +1,58 @@
+@use "../variables" as *;
+@use "../features" as *;
+
+#root {
+  min-height: 100vh;
+  font-family: $font-main;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.w-full{
+  width: 100%;
+}
+
+.mx-auto {
+  margin: auto;
+}
+
+.flexRow {
+  flex-direction: row;
+}
+
+.flexCol {
+  flex-direction: column;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.btn {
+  display: flex;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  &:hover {
+    background-color: $theme-main;
+  }
+}

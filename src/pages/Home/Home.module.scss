@@ -1,0 +1,33 @@
+@use "../../scss/variables" as *;
+
+.bgPhone {
+  background-image: url("../../assets/phone.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 550px;
+  height: 1120px;
+  // padding-top: 100px;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 50px 55px 0 55px;
+  }
+  .screenBody{
+    padding:30px 40px 0 40px;
+  }
+}
+
+.addBtn {
+  display: flex;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 500ms;
+  &:hover {
+    transform: rotate(180deg);
+  }
+}
