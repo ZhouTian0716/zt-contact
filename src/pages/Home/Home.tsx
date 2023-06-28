@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GrFormAdd } from "react-icons/gr";
 import styles from "./Home.module.scss";
 import { getAllContacts } from "../../api/contacts";
@@ -51,7 +51,9 @@ const Home = () => {
             <span>My Name</span>
           </div>
           <ul>
-            {contacts.map((contact) => (
+            {isLoading && <li>Loading...</li>}
+            {fetchError && <li>{fetchError}</li>}
+            {contacts && contacts.map((contact) => (
               <li key={contact.id}>{contact.name}</li>
             ))}
           </ul>
